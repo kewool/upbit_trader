@@ -1,4 +1,3 @@
-from xml.dom import INDEX_SIZE_ERR
 from ta.trend import SMAIndicator, WMAIndicator, EMAIndicator, MACD
 from ta.momentum import RSIIndicator, StochRSIIndicator
 from ta.volatility import BollingerBands
