@@ -2,7 +2,7 @@ import upbitopenapi.config as conf
 from trading import *
 
 coin = "KRW-XRP"
-df = pd.read_csv(f"./data/{coin}-index.csv")
+#df = pd.read_csv(f"./data/{coin}-index.csv")
 
 access = conf.G_API_KEY
 secret = conf.G_SECRET_KEY
@@ -89,7 +89,7 @@ while True:
 
         if buy_cnt <= buy_cnt_limit and close < vwap and close < wma7 and wma7 > wma99:
             order_buy_amt = buy_amt_unit + float(buy_amt) * increase_rate
-            
+
             message, result = get_current_price(coin)
             if message != "good":
                 log(f"[{time.time()}] get_current_price error message: {message}")
