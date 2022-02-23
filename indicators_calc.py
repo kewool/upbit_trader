@@ -1,6 +1,6 @@
 from trading import *
 
-coin = "KRW-XRP"
+coin = "KRW-BORA"
 df = pd.read_csv(f"./data/{coin}.csv")
 df = df.sort_values(by="timestamp", ascending=True)
 columns = {"timestamp":'t', "openingPrice":'o', "highPrice":'h', "lowPrice":'l', "tradePrice":'c', "candleAccTradeVolume":'v'}

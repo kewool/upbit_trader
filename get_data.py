@@ -7,7 +7,7 @@ import random
 import datetime
 import os
 
-coin = "KRW-XRP"
+coin = "KRW-BORA"
 date = "2022-02-21T00:00:00"
 
 
