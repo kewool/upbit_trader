@@ -18,11 +18,11 @@ def black_box(revenue_rate, max_loss_rate, increase_rate, buy_cnt_limit, buy_amt
     return run_test(df, config)
 
 pbounds = {
-    "revenue_rate":(0.004795200288603781, 0.004795200288603781),
-    "max_loss_rate":(0.2965237753456481, 0.2965237753456481),
-    "increase_rate":(0.2000292756278028, 0.2000292756278028),
-    "buy_cnt_limit":(1, 5),
-    "buy_amt_unit":(1, 10)
+    "revenue_rate":(0.0001, 0.006),
+    "max_loss_rate":(0.0001, 0.006),
+    "increase_rate":(0.005, 0.2),
+    "buy_cnt_limit":(1, 1),
+    "buy_amt_unit":(30, 30)
     # "revenue_rate":(0.004795200288603781, 0.004795200288603781),
     # "max_loss_rate":(0.2965237753456481, 0.2965237753456481),
     # "increase_rate":(0.2000292756278028, 0.2000292756278028),

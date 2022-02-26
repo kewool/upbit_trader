@@ -3,3 +3,4 @@ data/
 upbitopenapi/config.py
 upbitopenapi/__pycache__
 __pycache__/
+web/

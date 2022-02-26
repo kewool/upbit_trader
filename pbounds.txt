@@ -1,6 +1,13 @@
 KRW-XRP
-"revenue_rate":0.004795200288603781,
-"max_loss_rate":0.2965237753456481,
-"increase_rate":0.2000292756278028,
-"buy_cnt_limit":17,
-"buy_amt_unit":31
+revenue_rate = 0.004795200288603781
+max_loss_rate = 0.2965237753456481
+increase_rate = 0.2000292756278028
+buy_cnt_limit = 17
+buy_amt_unit = 31
+
+KRW-BORA
+revenue_rate = 0.005
+max_loss_rate = 0.05
+increase_rate = 0.1
+buy_cnt_limit = 2
+buy_amt_unit = 6

@@ -1,3 +1,4 @@
+from re import I
 from ta.trend import SMAIndicator, WMAIndicator, EMAIndicator, MACD
 from ta.momentum import RSIIndicator, StochRSIIndicator
 from ta.volatility import BollingerBands
@@ -124,7 +125,7 @@ def get_max_loss(close, buy_amt_unit, buy_cnt_limit, increase_rate, max_loss_rat
 def adj_revenue(revenue, close, buy_amt_unit, buy_cnt_limit, increase_rate):
     open_amt_list = get_buy_amount(buy_amt_unit, buy_cnt_limit, increase_rate)
     max_amt = open_amt_list[len(open_amt_list)-1]
-    adj_revenue = (10 * revenue) / max_amt
+    adj_revenue = (30 * revenue) / max_amt
     return adj_revenue
 
 def run_test(df, config):
@@ -135,7 +136,7 @@ def run_test(df, config):
     buy_amt_unit = config["buy_amt_unit"]
 
     trade_fee = 0.001
-    close = 960
+    close = 880
 
     buy_amt_list = get_buy_amount(buy_amt_unit, buy_cnt_limit, increase_rate)
     max_loss = get_max_loss(close, buy_amt_unit, buy_cnt_limit, increase_rate, max_loss_rate)
@@ -269,12 +270,12 @@ def sell_limit_order(api, coin, price, amt):
     except:
         message = f"{sys.esc_info()}"
     
-    try:
-        message = result["error"]["message"]
-    except:
-        if message == "":
-            message = "good"
-            uuid = result["uuid"]
+    # try:
+    #     message = result["error"]["message"]
+    # except:
+    if message == "":
+        message = "good"
+        uuid = result["uuid"]
     return message, uuid
 
 def buy_market_order(api, coin, price):
@@ -415,9 +416,11 @@ def get_time(time, arg):
     return str(dt.strftime(f"%{arg}"))
 
 def check_open_cnt(check_data, amt_list):
-    for i, k in enumerate(amt_list):
-        if round(float(check_data), 0) == round(float(k), 0):
+    i = 1
+    for j in amt_list:
+        if round(float(check_data), 0) == round(float(j), 0):
             return i
+        i += 1
     return i
 
 def get_buy_amt_list(buy_amt_unit, buy_cnt_limit, increase_rate):

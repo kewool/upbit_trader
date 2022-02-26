@@ -143,38 +143,38 @@ while True:
                 log(f"[{time.time()}] take profit uuid: {profit_uuid}, buy_amt: {buy_amt}, buy_price: {buy_price}, message: {message}")
             time.sleep(sleep_time)
 
-        # if stop_uuid != "":
-        #     message, stauts, price, amt = get_order_status(api, coin, stop_uuid)
-        #     if message != "good":
-        #         log(f"[{time.time()}] get_order_status error message: {message}, uuid: {stop_uuid}")
-        #         continue
+        if stop_uuid != "":
+            message, stauts, price, amt = get_order_status(api, coin, stop_uuid)
+            if message != "good":
+                log(f"[{time.time()}] get_order_status error message: {message}, uuid: {stop_uuid}")
+                continue
 
-        #     if status == "done":
-        #         stop_uuid = ""
+            if status == "done":
+                stop_uuid = ""
             
-        #     if status == "wait":
-        #         message, result = cancel_order(api, coin)
-        #         if message != "good":
-        #             log(f"[{time.time()}] cancel_order error message: {message}, uuid: {stop_uuid}")
-        #             continue
-        #         time.sleep(sleep_time)
+            if status == "wait":
+                message, result = cancel_order(api, coin)
+                if message != "good":
+                    log(f"[{time.time()}] cancel_order error message: {message}, uuid: {stop_uuid}")
+                    continue
+                time.sleep(sleep_time)
         
-        # message, buy_amt, buy_price = get_balance(api, coin)
-        # if message != "good":
-        #     log(f"[{time.time()}] get_balance error message: {message}")
-        #     continue
-        # time.sleep(sleep_time)
+        message, buy_amt, buy_price = get_balance(api, coin)
+        if message != "good":
+            log(f"[{time.time()}] get_balance error message: {message}")
+            continue
+        time.sleep(sleep_time)
 
-        # if float(buy_amt) > 0:
-        #     message, result = get_current_price(coin)
-        #     if message != "good":
-        #         log(f"[{time.time()}] get_current_price error message: {message}")
-        #         continue
+        if float(buy_amt) > 0:
+            message, result = get_current_price(coin)
+            if message != "good":
+                log(f"[{time.time()}] get_current_price error message: {message}")
+                continue
 
-        #     message, uuid = stop_loss(api, coin, buy_amt, buy_price, float(result), max_loss_rate)
-        #     if message == "good":
-        #         stop_uuid = uuid
-        #         log(f"[{time.time()}] stop loss uuid: {stop_uuid}, buy_amt: {buy_amt}, buy_price: {buy_price}, now_price: {result}, message: {message}")
-        #     time.sleep(sleep_time)
+            message, uuid = stop_loss(api, coin, buy_amt, buy_price, float(result), max_loss_rate)
+            if message == "good":
+                stop_uuid = uuid
+                log(f"[{time.time()}] stop loss uuid: {stop_uuid}, buy_amt: {buy_amt}, buy_price: {buy_price}, now_price: {result}, message: {message}")
+            time.sleep(sleep_time)
     time.sleep(1)
 
